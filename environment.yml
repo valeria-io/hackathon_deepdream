@@ -1,6 +1,6 @@
 name: deepdream_hackathon
 dependencies:
-    - python==3.5.2
+    - python==3.7
     - matplotlib==3.0.0
     - tensorflow==1.10.0
     - pillow==5.2.0
