@@ -13,7 +13,7 @@ if __name__ == "__main__":
 
     images = [os.path.join(input_video_frames_path, filename) for filename in os.listdir(input_video_frames_path)]
 
-    for image_path in images[0:1]:
+    for image_path in images[0:10]:
         filename = os.path.basename(image_path)
 
         image = load_image(filename=image_path)
@@ -27,4 +27,4 @@ if __name__ == "__main__":
         image_save = save_image(img_result, os.path.join(output_video_frames_path, filename))
         print("Image saved to" + os.path.join(output_video_frames_path, filename))
 
-    images_to_video(output_frames_path, output_video_path)
+    images_to_video(output_video_frames_path, output_video_path)
