@@ -1,5 +1,6 @@
 import React from 'react';
 import './App.css';
+import deepdream_video from './images/lady.gif'
 import Button from '@material-ui/core/Button';
 
 
@@ -18,10 +19,19 @@ class App extends React.Component {
     render() {
       return(
           <div className="Content">
-            <div className="Banner"></div>
-                <Button variant="contained" color="secondary" className='StartButton' onClick={this.handleClick}>
-                    Start your own nightmare
+            <div className="Banner">
+                <img src={deepdream_video} height="100%" width="100%"/>
+                <div className="BannerText">
+                    <span className='subtitle'>Deepdream Team Presents</span>
+                    <h1 className="Danger">A night with your nightmare</h1>
+                </div>
+                <div className='ButtonContainer'>
+                <Button variant="outlined" color="secondary" className='StartButton' onClick={this.handleClick}>
+                    Start your own 	&nbsp;<span className='MiniDanger'>nightmare</span>
                 </Button>
+                </div>
+            </div>
+
           </div>
         )
     }
