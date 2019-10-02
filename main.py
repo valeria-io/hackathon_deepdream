@@ -11,14 +11,17 @@ if __name__ == "__main__":
 
     session = tf.InteractiveSession(graph=model.graph)
 
-    images = [os.path.join(input_video_frames_path, filename) for filename in os.listdir(input_video_frames_path)]
+    images = sorted(
+        [os.path.join(input_video_frames_path, filename) for filename in os.listdir(input_video_frames_path)])
 
-    for image_path in images[0:10]:
+    for image_path in images:
         filename = os.path.basename(image_path)
 
         image = load_image(filename=image_path)
 
-        layer_tensor = model.layer_tensors[6]
+        #layer_tensor = model.layer_tensors[6] #for dogs
+        layer_tensor = model.layer_tensors[10] #for reptiles
+
         img_result = recursive_optimize(layer_tensor=layer_tensor, image=image, session=session,
                                         num_iterations=10, step_size=3.0, rescale_factor=0.7,
                                         num_repeats=2, blend=0.2)
