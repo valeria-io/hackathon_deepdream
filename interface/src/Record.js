@@ -34,7 +34,7 @@ class Record extends React.Component {
                     width={800}
                     videoConstraints={videoConstraints}
                 />
-                <div><Button variant="contained" color="secondary" onClick={this.capture} className="Button">Capture photo</Button></div>
+                <div><Button variant="contained" color="secondary" onClick={this.capture} className="MiniDangerButton">Capture	&nbsp; photo</Button></div>
             </div>
 
         );
