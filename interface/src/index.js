@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import Record from './Record'
-
+import Result from "./Result";
 
 import { Route, BrowserRouter as Router } from 'react-router-dom'
 
@@ -13,6 +13,7 @@ const routing = (
         <div>
             <Route exact path="/" component={App} />
             <Route path="/record" component={Record} />
+            <Route path="/result" component={Result} />
         </div>
     </Router>
 )

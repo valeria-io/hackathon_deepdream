@@ -30,27 +30,6 @@ def save_image(image, filename):
         PIL.Image.fromarray(image).save(file, 'jpeg')
 
 
-def plot_image(image):
-    # Assume the pixel-values are scaled between 0 and 255.
-
-    if False:
-        # Convert the pixel-values to the range between 0.0 and 1.0
-        image = np.clip(image / 255.0, 0.0, 1.0)
-
-        # Plot using matplotlib.
-        plt.imshow(image, interpolation='lanczos')
-        plt.show()
-    else:
-        # Ensure the pixel-values are between 0 and 255.
-        image = np.clip(image, 0.0, 255.0)
-
-        # Convert pixels to bytes.
-        image = image.astype(np.uint8)
-
-        # Convert to a PIL-image and display it.
-        display(PIL.Image.fromarray(image))
-
-
 def normalize_image(x):
     # Get the min and max values for all pixels in the input.
     x_min = x.min()
@@ -213,9 +192,6 @@ def optimize_image(layer_tensor, image,
     # Copy the image so we don't overwrite the original image.
     img = image.copy()
 
-    print("Image before:")
-    plot_image(img)
-
     print("Processing image: ", end="")
 
     # Use TensorFlow to get the mathematical function for the
@@ -268,8 +244,6 @@ def optimize_image(layer_tensor, image,
             print(". ", end="")
 
     print()
-    print("Image after:")
-    plot_image(img)
 
     return img
 
@@ -337,13 +311,14 @@ def recursive_optimize(layer_tensor, image,
 
     return img_result
 
-image = load_image(filename=r'C:\Users\Demo\Downloads\image (12).jpg')
-plot_image(image)
 
-layer_tensor = model.layer_tensors[2]
+if __name__ == '__main__':
+    image = load_image(filename=r'C:\Users\Demo\Downloads\image (13).jpg')
 
-img_result = optimize_image(layer_tensor, image,
-                   num_iterations=10, step_size=6.0, tile_size=400,
-                   show_gradient=True)
+    layer_tensor = model.layer_tensors[2]
 
-save_image(img_result, filename=r'C:\Users\Demo\Downloads\deepdream_groupPhoto.jpg')
+    img_result = optimize_image(layer_tensor, image,
+                       num_iterations=10, step_size=6.0, tile_size=400,
+                       show_gradient=True)
+
+    save_image(img_result, filename=r'C:\Users\Demo\Desktop\hackathon\interface\src\results\result.jpg')
