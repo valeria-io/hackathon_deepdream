@@ -22,8 +22,8 @@ class App extends React.Component {
             <div className="Banner">
                 <img src={deepdream_video} height="100%" width="100%"/>
                 <div className="BannerText">
-                    <span className='subtitle'>Deepdream Team Presents</span>
-                    <h1 className="Danger">A night with your nightmare</h1>
+                    <span className='subtitle'>Deepdream&trade; presents</span>
+                    <h1 className="Danger">A night with your worst nightmare</h1>
                 </div>
                 <div className='ButtonContainer'>
                 <Button variant="outlined" color="secondary" className='StartButton' onClick={this.handleClick}>
