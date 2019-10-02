@@ -14,7 +14,7 @@ class Record extends React.Component {
         const imageSrc = this.webcam.getScreenshot();
         var FileSaver = require('file-saver');
         console.log(imageSrc)
-        FileSaver.saveAs('images/'+imageSrc, "image.jpg");
+        FileSaver.saveAs(imageSrc, "image.jpg");
     };
 
     render() {
