@@ -2,6 +2,7 @@ import React from 'react';
 import Webcam from "react-webcam";
 import './Record.css';
 import Button from '@material-ui/core/Button';
+import { saveAs } from 'file-saver';
 
 
 class Record extends React.Component {
@@ -11,7 +12,9 @@ class Record extends React.Component {
 
     capture = () => {
         const imageSrc = this.webcam.getScreenshot();
-        console.log('got it')
+        var FileSaver = require('file-saver');
+        console.log(imageSrc)
+        FileSaver.saveAs(imageSrc, "image.jpg");
     };
 
     render() {
@@ -31,7 +34,7 @@ class Record extends React.Component {
                     width={800}
                     videoConstraints={videoConstraints}
                 />
-                <div><Button variant="contained" color="secondary" onClick={this.capture} className="Button">Capture photo</Button></div>
+                <div><Button variant="contained" color="secondary" onClick={this.capture} className="MiniDangerButton">Capture	&nbsp; photo</Button></div>
             </div>
 
         );
