@@ -1,9 +1,10 @@
 import React from 'react';
 import Webcam from "react-webcam";
+
 import './Record.css';
 import Button from '@material-ui/core/Button';
 import { saveAs } from 'file-saver';
-
+import * as $ from 'jquery';
 
 class Record extends React.Component {
     setRef = webcam => {
@@ -18,24 +19,39 @@ class Record extends React.Component {
         /* Look at here, you can add it here */
         this.props.history.push('/result?img='+img);
     }
+    reload(){
+        window.location.reload();
+    }
 
     capture = () => {
         const imageSrc = this.webcam.getScreenshot();
         //this.handleClick(imageSrc);
         var x = document.getElementById("div_func");
         x.style.display = "none";
+
+        var y = document.getElementById("TryButton");
+        y.style.display = "block";
+
         document.getElementById("myImg").setAttribute('src', imageSrc);
         var FileSaver = require('file-saver');
-        FileSaver.saveAs(imageSrc, imageSrc+".jpg");
+        FileSaver.saveAs(imageSrc, "photo_before.jpg");
+
 
         // $.ajax({
-        //   type: "POST",
-        //   url: "~/deepdream.py",
-        //   data: { param: text}
-        // }).done(function( o ) {
-        //    // do something
+        //    url: "/deepdream",
+        //    success: function(response) {
+        //        console.log('hi')
+        //    }
+        //
         // });
+            // PythonShell.run('interface/deepdream.py', function (err) {
+            //     if (err) throw err;
+            //     console.log('finished');
+            // });
 
+    //     let {PythonShell} = require('python-shell')
+    //     PythonShell.run('interface/deepdream.py');
+    //
     };
 
     render() {
@@ -47,7 +63,11 @@ class Record extends React.Component {
 
         return (
             <div className="CamContainer">
-                <div><img id="myImg" /></div>
+                <div>
+                    <img id="myImg" />
+                    <div><Button variant="contained" color="secondary" onClick={this.reload} id='TryButton' className="MiniDangerButton ">Try	&nbsp; again</Button></div>
+
+                </div>
                 <div id="div_func">
                     <Webcam
                         audio={false}

@@ -3,6 +3,9 @@ import tensorflow as tf
 import numpy as np
 import random
 import math
+import sys
+import glob
+import os
 
 # Image manipulation.
 import PIL.Image
@@ -311,14 +314,24 @@ def recursive_optimize(layer_tensor, image,
 
     return img_result
 
+from flask import Flask, render_template, request, jsonify
 
-if __name__ == '__main__':
-    image = load_image(filename=r'C:\Users\Demo\Downloads\image (13).jpg')
+app = Flask(__name__)
 
-    layer_tensor = model.layer_tensors[2]
+def deepdream_run():
+    list_of_files = glob.glob(r'C:\Users\Demo\Downloads\*')  # * means all if need specific format then *.csv
+    latest_file = max(list_of_files, key=os.path.getctime)
+    image = load_image(filename=latest_file)
+
+    layer_tensor = model.layer_tensors[3]
 
     img_result = optimize_image(layer_tensor, image,
-                       num_iterations=10, step_size=6.0, tile_size=400,
-                       show_gradient=True)
+                                num_iterations=10, step_size=6.0, tile_size=400,
+                                show_gradient=True)
 
     save_image(img_result, filename=r'C:\Users\Demo\Desktop\hackathon\interface\src\results\result.jpg')
+
+if __name__ == "__main__":
+    deepdream_run()
+
+

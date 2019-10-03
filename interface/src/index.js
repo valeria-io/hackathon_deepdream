@@ -14,6 +14,7 @@ const routing = (
             <Route exact path="/" component={App} />
             <Route path="/record" component={Record} />
             <Route path="/result" component={Result} />
+            <Route path="/run" component={Result} />
         </div>
     </Router>
 )

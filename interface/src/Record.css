@@ -16,6 +16,10 @@
 
 }
 
+#TryButton{
+    display: none!important;
+}
+
 .MiniDangerButton{
   padding: 15px!important;
   color: yellow!important;
