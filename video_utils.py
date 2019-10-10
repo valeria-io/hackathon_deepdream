@@ -18,8 +18,8 @@ def video_to_images(input_video_path):
         count += 1
 
 
-def images_to_video(output_video_frames_path, output_video_path):
-    filename = datetime.datetime.now().strftime("%Y_%m_%d__%H_%M_DeepDream_video.mp4")
+def images_to_video(output_video_frames_path, output_video_path, style_name):
+    filename = datetime.datetime.now().strftime("%Y_%m_%d__%H_%M_DeepDream_video_") + style_name + ".mp4"
 
     output = os.path.join(output_video_path, filename)
 
