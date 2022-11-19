@@ -17,7 +17,7 @@
     "react-multimedia-capture": "^1.2.4",
     "react-router": "^5.1.2",
     "react-router-dom": "^5.1.2",
-    "react-scripts": "3.1.2",
+    "react-scripts": "5.0.1",
     "react-webcam": "^3.1.0"
   },
   "scripts": {
